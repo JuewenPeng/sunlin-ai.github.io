@@ -1,0 +1,18 @@
+<!-- Link Gitalk 的支持文件  -->
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script> 
+<div id="gitalk-container"></div>     <script type="text/javascript">
+    var gitalk = new Gitalk({
+
+    // gitalk的主要参数
+        clientID: '7c854c0f32253f034752',
+        clientSecret: '090c39c28b126c78184f1b2fd4d12f30d18d196f',
+        repo: 'sunlin-ai.github.io',
+        owner: 'sunlin-ai',
+        admin: ['sunlin-ai'],
+        id:decodeURI(window.location.pathname),
+
+    });
+    gitalk.render('gitalk-container');
+</script> 
+<!-- Gitalk end -->

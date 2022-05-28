@@ -1,0 +1,93 @@
+title:            sunlin-ai
+description:      I write about machine learning, deep learning, generative models and more.
+disqus_shortname: sunlin
+reading_time:     true
+words_per_minute: 200
+# Your site's domain goes here (eg: https://mmistakes.github.io, http://yourdomain.com, etc)
+# When testing locally leave blank or use http://localhost:4000
+url:              https://github.com/sunlin-ai
+
+# Owner/author information
+owner:
+  name:           Sun Lin
+  avatar:         avatar.jpg
+  bio:            "Research Scientist"
+  email:          869883772@qq.com
+  # Social networking links used in footer. Update and remove as you like.
+  twitter:        
+  facebook:       
+  github:         sunlin-ai
+  stackexchange:  
+  linkedin:       
+  instagram:      
+  flickr:         
+  tumblr:         
+  # google plus id, include the '+', eg +mmistakes
+  google_plus:
+  reddit:         
+
+
+# Background image to be tiled on all pages
+background: 
+
+# Analytics and webmaster tools stuff goes here
+google_analytics:   UA—XXXXXXXX-X
+google_verify:      
+# https://ssl.bing.com/webmaster/configure/verify/ownership Option 2 content= goes here
+bing_verify:         
+
+# http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+timezone:    Europe/London
+future:      true  # publish future dated posts --  true, false (default) 
+highlighter: rouge
+markdown:    kramdown
+plugins:
+  - jekyll-sitemap
+  - jekyll-paginate
+  - jekyll-gist
+  - jekyll-feed
+sass:
+  sass_dir: _sass
+  style: compressed
+
+# https://github.com/mojombo/jekyll/wiki/Permalinks
+permalink:   /:categories/:year/:month/:day/:title:output_ext
+# Note: this is set to /:categories/:title/ by default, but I've had to change it for
+# backwards compatibility (i.e. to avoid breaking all my URLs and disqus comments).
+
+# Amount of post to show on home page
+paginate: 5
+
+kramdown:
+  input: GFM
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..6
+  enable_coderay: false
+
+include: 
+  - .htaccess
+exclude: 
+  - "*.less"
+  - "*.sublime-project"
+  - "*.sublime-workspace"
+  - .asset-cache
+  - .bundle
+  - .jekyll-assets-cache
+  - .sass-cache
+  - CHANGELOG
+  - Capfile
+  - Gemfile
+  - Gruntfile.js
+  - LICENSE
+  - README
+  - Rakefile
+  - config
+  - gulpfile.js
+  - lib
+  - log
+  - node_modules
+  - package.json
+  - spec
+  - tmp
