@@ -23,6 +23,7 @@
 
 <div id="main" role="main">
   <article class="hentry">
+
     <header class="header-title">
       <div class="header-title-wrap">
         {% if page.link %}
@@ -39,6 +40,7 @@
         {% endif %}
       </div><!-- /.header-title-wrap -->
     </header>
+
     <div class="entry-content">
       {{ content }}
       <footer class="entry-meta">
@@ -48,7 +50,7 @@
         {% if page.share != false %}{% include social-share.html %}{% endif %}
       </footer>
     </div><!-- /.entry-content -->
-    {% if page.comments != false %}<section id="disqus_thread"></section><!-- /#disqus_thread -->{% endif %}
+
     {% if site.related_posts.size > 0 %}{% include read-more.html %}{% endif %}
   </article>
 </div><!-- /#main -->

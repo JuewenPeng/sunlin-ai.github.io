@@ -1,6 +1,6 @@
 ---
 layout: post-index
-title: Latest Posts
+title: 分享机器学习、深度学习、计算机视觉学习心得
 description: "Describe this nonsense."
 tags: [Jekyll, theme, themes, responsive, blog, modern]
 comments: false
@@ -33,7 +33,7 @@ image:
   </header>
 
   <div class="read-more-content">
-     <p>{% if post.description %}{{ post.description }}{% else %}{{ post.content | strip_html | strip_newlines | truncate: 500 }}&hellip;{% endif %} <a href="{{ site.url }}{{ post.url }}">Continue reading</a></p>
+     <p>{% if post.description %}{{ post.description }}{% else %}{{ post.content | strip_html | strip_newlines | truncate: 140 }}&hellip;{% endif %} <a href="{{ site.url }}{{ post.url }}">Continue reading</a></p>
   </div><!-- /.read-more-content -->
 
 </article><!-- /.hentry -->
