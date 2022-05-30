@@ -35,7 +35,7 @@ Diffusions models 属于 likelihood-based models，其具有分布覆盖广，�
 
 ### <a name=""></a> 架构改进
 
-探索了如下架构改进方案：
+文章[^1]探索了如下架构改进方案：
 
 - 增加模型的深度，同时减少模型宽度以保持模型大小不变；
 - 增加 attention heads 的数量；
@@ -150,7 +150,7 @@ $$\begin{aligned}
 
 ####  <a name=""></a> Conditional Sampling for DDIM
 
-DDIM 为确定性条件采样，不能用上面的采样方法。
+DDIM[^2] 为确定性条件采样，不能用上面的采样方法。
 
 根据贝叶斯公式：
 
@@ -207,18 +207,6 @@ $$s\cdot \nabla_\mathbf{x} \log p(\mathbf{y} \mid \mathbf{x})=\nabla_\mathbf{x} 
 - gradient scale 可以用于平衡图像生成的逼真度和多样性。
 
 - 使用分类引导（ classifier guidance）可以生成更加逼真的图像，基于这个观察，分类引导既可以用于生成 conditional 样本 $$p(x\mid y)$$ 任务上，也可以用于生成 unconditional 样本 $$p(x)$$ 任务上。
-
-
-
-**为什么分类引导有利于生成逼真的图像？（个人理解）**
-
- diffusion 模型是从高斯噪声逐步生成图像，如果没有分类引导， diffusion model 没有约束，可以天马行空地生成各种图像，这其中有些图像看上去是没有意义的，这就是多样性高，但是逼真度低的问题。
-
-如果增加分类引导，相当于给 diffusion model 增加了约束，迫使它生成有有意义的图像（能否分类），从而可以提高图像逼真度，但是代价就是模型没法任性发挥，这样多样性就降低了。
-
-如果想要平衡图像逼真度和多样性，只要简单地调节缩放因子 $$s$$ 即可！妙哉！
-
-
 
 ## <a name=""></a> 实验结果
 
@@ -777,12 +765,6 @@ $$\begin{aligned}
 &=\mathbf{\mu_{t}}-\alpha \nabla_{J_{\phi}}(\mathbf{x_{t}},\mathbf{y})
 \end{aligned}, $$
 
-待研究的问题：
-
-(1) 是否 $$s\Sigma$$ 中的 $$\Sigma$$  带来了不稳定性；
-
-(2) 使用 Adam 梯度更新。
-
 $$\mathbf{\mu_{t-1}}$$ 的更新代码如下：
 
 ```python
@@ -890,6 +872,5 @@ def p_sample(
 
 ## <a name=""></a> 参考
 
-论文链接：https://arxiv.org/pdf/2105.05233.pdf
-
-代码链接： https://github.com/openai/guided-diffusion.
+[^1]: Prafulla Dhariwal, Alex Nichol, ["Diffusion Models Beat GANs on Image Synthesis"](https://arxiv.org/pdf/2105.05233.pdf), Computer Vision and Pattern Recognition, 2021. [code](https://github.com/openai/guided-diffusion)
+[^2]: sunlin, [[论文理解\] DENOISING DIFFUSION IMPLICIT MODELS ](https://sunlin-ai.github.io/2022/05/29/DDIM.html)
