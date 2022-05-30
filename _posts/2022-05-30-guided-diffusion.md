@@ -342,9 +342,9 @@ posterior_mean_coef2 = ((1.0 - alphas_cumprod_prev)* np.sqrt(alphas)/ (1.0 - alp
 
 当使用 linear schedule 时，posterior_mean_coef1 和 posterior_mean_coef2 曲线如下：
 
-<figure>
-  <img src="/images/image-20220510143659591.png" style="zoom:30%">
-  <img src="/images/image-20220510143725411.png" style="zoom:30%">
+<figure align="center">
+  <img src="/images/image-20220510143659591.png" style="zoom:35%">
+  <img src="/images/image-20220510143725411.png" style="zoom:35%">
 </figure>
 
 #### <a name=""></a> 正向过程
