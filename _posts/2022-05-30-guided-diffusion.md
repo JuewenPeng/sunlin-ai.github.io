@@ -283,7 +283,7 @@ if schedule_name == "cosine":
 
 <figure align="center">
   <img src="/images/image-20220510141328096.png" style="zoom:80%">
-</figurestyle="zoom:80%"
+</figurestyle
 
 #### <a name=""></a> 参数计算
 
