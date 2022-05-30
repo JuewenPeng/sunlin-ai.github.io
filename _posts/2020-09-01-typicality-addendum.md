@@ -151,6 +151,8 @@ We can express the solution of this equation in terms of the Lambert $$W$$ funct
 
 $$r = \sqrt{K (K - 1) W\left(\frac{1}{K (K - 1)} \exp \left( \frac{1}{K - 1} +  \log \frac{K}{2} - \gamma \right) \right)} .$$
 
+
+
 ```python
 import matplotlib.pyplot as plt
 import numpy as np
