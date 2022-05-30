@@ -249,7 +249,7 @@ if schedule_name == "linear":
  $$\beta$$ 计算结果如下:
 
 <figure align="center">
-  <img src="/images/image-20220510141314281.png" style="zoom:50%" >
+  <img src="/images/image-20220510141314281.png" style="zoom:80%" >
 </figure>
 
 如果选用 linear schedule：
@@ -282,8 +282,8 @@ if schedule_name == "cosine":
  $$\beta$$ 计算结果如下:
 
 <figure align="center">
-  <img src="/images/image-20220510141328096.png" >
-</figure>
+  <img src="/images/image-20220510141328096.png" style="zoom:80%">
+</figurestyle="zoom:80%"
 
 #### <a name=""></a> 参数计算
 
@@ -343,8 +343,8 @@ posterior_mean_coef2 = ((1.0 - alphas_cumprod_prev)* np.sqrt(alphas)/ (1.0 - alp
 当使用 linear schedule 时，posterior_mean_coef1 和 posterior_mean_coef2 曲线如下：
 
 <figure align="center">
-  <img src="/images/image-20220510143659591.png" >
-  <img src="/images/image-20220510143725411.png" >
+  <img src="/images/image-20220510143659591.png" style="zoom:80%">
+  <img src="/images/image-20220510143725411.png" style="zoom:80%">
 </figure>
 
 #### <a name=""></a> 正向过程
@@ -737,7 +737,7 @@ cross_entropy： tensor(8.5310)s
 
 cross_entropy 取了均值，所以相差一个系数 2和负号，所以  $$\log p_{\phi}\left(\mathbf{y} \mid \mathbf{x_{t}}\right)$$ 衡量了 $$\mathbf{x_{t}}$$ 与 $$\mathbf{y}$$ 的距离，两者关系如下：
 
-$$\log p_{\phi}\left(\mathbf{y} \mid \mathbf{x_{t}}\right)=-N\cdot \text{cross\_entropy}(\mathbf{x_{t}},\mathbf{y}), $$
+$$\log p_{\phi}\left(\mathbf{y} \mid \mathbf{x_{t}}\right)=-N\cdot \text{CrossEntropy}(\mathbf{x_{t}},\mathbf{y}), $$
 
 所以带条件的 mean 更新本质上就是使用的 SGD 梯度下降法：
 
