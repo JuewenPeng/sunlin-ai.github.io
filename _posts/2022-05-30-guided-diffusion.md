@@ -77,9 +77,39 @@ $$\text{AdaGN}(h,y)=y_s \text{GroupNorm}(h)+y_b, $$
 
 以 label $$y$$ 为条件时，使用如下方式采样：
 
+$$\begin{aligned}
+p(x_t \mid x_{t+1},y) 
+&= \frac{p(x_t,x_{t+1},y)}{p(x_{t+1},y)} \\
+&= \frac{p(x_t,x_{t+1},y)}{p(y \mid x_{t+1})p(x_{t+1})} \\
+&= \frac{p(x_t \mid x_{t+1})p(y \mid x_t,x_{t+1})p(x_{t+1})}{p(y \mid x_{t+1})p(x_{t+1})} \\
+&= \frac{p(x_t \mid x_{t+1})p(y \mid x_t,x_{t+1})}{p(y \mid x_{t+1})} \\
+&= \frac{p(x_t \mid x_{t+1})p(y \mid x_t)}{p(y \mid x_{t+1})} \\
+\end{aligned}, $$
+
+因为类别 $$y$$ 的分布与 $$x_{t+1}$$ 是独立的，所以：
+
+$$\begin{aligned}
+p(y \mid x_t,x_{t+1})
+&=p(x_{t+1} \mid x_t,y) \frac{p(y \mid x_t)}{p(x_{t+1}\mid x_t)}\\
+&=p(x_{t+1} \mid x_t) \frac{p(y \mid x_t)}{p(x_{t+1}\mid x_t)}\\
+&=p(y \mid x_t)
+\end{aligned} $$
+
+代入上式得：
+
+$$\begin{aligned}
+p(x_t \mid x_{t+1},y) 
+&= \frac{p(x_t \mid x_{t+1})p(y \mid x_t,x_{t+1})}{p(y \mid x_{t+1})} \\
+&= \frac{p(x_t \mid x_{t+1})p(y \mid x_t)}{p(y \mid x_{t+1})} \\
+\end{aligned}, $$
+
+因为每个样本的 label 是已知的，所以 $$p(y \mid x_{t+1})$$ 可视为常数，因此：
+
 $$p_{\theta, \phi}\left(x_{t} \mid x_{t+1}, y\right)=Z\cdot p_{\theta}\left(x_{t} \mid x_{t+1}\right)\cdot p_{\phi}\left(y \mid x_{t}\right), $$
 
 式中， $$Z$$  是标准化常数，上式是 intractable 的，可以用 perturbed Gaussian distribution 近似。
+
+
 
 **(1) $$p_{\theta}\left(x_{t} \mid x_{t+1}\right)$$ 项**
 
@@ -88,7 +118,7 @@ $$p_{\theta, \phi}\left(x_{t} \mid x_{t+1}, y\right)=Z\cdot p_{\theta}\left(x_{t
 $$\begin{aligned}
 p_{\theta}\left(x_{t} \mid x_{t+1}\right) &=\mathcal{N}(\mu, \Sigma) \\
 \log p_{\theta}\left(x_{t} \mid x_{t+1}\right) &=-\frac{1}{2}\left(x_{t}-\mu\right)^{T} \Sigma^{-1}\left(x_{t}-\mu\right)+C
-\end{aligned}, $$
+\end{aligned} $$
 
 **(2) $$ p_{\phi}\left(y \mid x_{t}\right)$$ 项**
 
@@ -97,7 +127,7 @@ p_{\theta}\left(x_{t} \mid x_{t+1}\right) &=\mathcal{N}(\mu, \Sigma) \\
 $$\begin{aligned}
 \log p_{\phi}\left(y \mid x_{t}\right) &\left.\approx \log p_{\phi}\left(y \mid x_{t}\right)\right|_{x_{t}=\mu}+\left.\left(x_{t}-\mu\right) \nabla_{x_{t}} \log p_{\phi}\left(y \mid x_{t}\right)\right|_{x_{t}=\mu} \\
 &=\left(x_{t}-\mu\right) g+C_{1}
-\end{aligned}, $$
+\end{aligned} $$
 
 式中，$$C_1$$ 为常数，且：
 
