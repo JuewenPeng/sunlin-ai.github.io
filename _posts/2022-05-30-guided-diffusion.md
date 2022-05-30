@@ -92,7 +92,7 @@ p_{\theta}\left(x_{t} \mid x_{t+1}\right) &=\mathcal{N}(\mu, \Sigma) \\
 
 **(2) $$ p_{\phi}\left(y \mid x_{t}\right)$$ 项**
 
-在无限扩散时间步下， $$\|\Sigma\| \rightarrow 0$$，可以假设 $$\log_{\phi} p(y|x_{t})$$ 相比 $$\Sigma^{-1}$$ 有着更低的曲率，那么我们可以对 $$\text{log} p_{\phi}(y | x_{t})$$ 在 $$x_{t}=\mu$$  处进行泰勒展开：
+在无限扩散时间步下， $$\|\Sigma\| \rightarrow 0$$，可以假设 $$\log_{\phi} p(y\mid x_{t})$$ 相比 $$\Sigma^{-1}$$ 有着更低的曲率，那么我们可以对 $$\text{log} p_{\phi}(y \mid x_{t})$$ 在 $$x_{t}=\mu$$  处进行泰勒展开：
 
 $$\begin{aligned}
 \log p_{\phi}\left(y \mid x_{t}\right) &\left.\approx \log p_{\phi}\left(y \mid x_{t}\right)\right|_{x_{t}=\mu}+\left.\left(x_{t}-\mu\right) \nabla_{x_{t}} \log p_{\phi}\left(y \mid x_{t}\right)\right|_{x_{t}=\mu} \\
@@ -249,7 +249,7 @@ if schedule_name == "linear":
  $$\beta$$ 计算结果如下:
 
 <figure align="center">
-  <img src="/images/image-20220510141314281.png" >
+  <img src="/images/image-20220510141314281.png" style="zoom:50%" >
 </figure>
 
 如果选用 linear schedule：
@@ -281,7 +281,9 @@ if schedule_name == "cosine":
 
  $$\beta$$ 计算结果如下:
 
-![image-20220510141328096](../images/image-20220510141328096.png)
+<figure align="center">
+  <img src="/images/image-20220510141328096.png" >
+</figure>
 
 #### <a name=""></a> 参数计算
 
@@ -342,9 +344,6 @@ posterior_mean_coef2 = ((1.0 - alphas_cumprod_prev)* np.sqrt(alphas)/ (1.0 - alp
 
 <figure align="center">
   <img src="/images/image-20220510143659591.png" >
-</figure>
-
-<figure align="center">
   <img src="/images/image-20220510143725411.png" >
 </figure>
 
@@ -680,9 +679,11 @@ def p_mean_variance(self, model, x, t, clip_denoised=True, denoised_fn=None, mod
 
 当带条件时，需要在无条件 mean 基础上加上偏移量，采样过程如下：
 
-![image-20220506231348507](../assets/images/image-20220506231348507.png)
+<figure align="center">
+  <img src="/images/image-20220506231348507.png" >
+</figure>
 
-  $\nabla_{\mathbf{x_{t}}} \log p_{\phi}\left(\mathbf{y} \mid \mathbf{x_{t}}\right)$ 计算代码如下：
+  $$\nabla_{\mathbf{x_{t}}} \log p_{\phi}\left(\mathbf{y} \mid \mathbf{x_{t}}\right)$$ 计算代码如下：
 
 ```python
 def cond_fn(x, t, y=None):
