@@ -34,9 +34,6 @@ $$\nabla_x \log \tilde{p}(x) = \nabla_x \log \left( p(x) \cdot Z \right) = \nabl
 
 ## <a name="classifier"></a> 理论推导
 
-<figure>
-  <a href="/images/sorted.jpg"><img src="/images/sorted.jpg"></a>
-</figure>
 
 根据 DDIM 的采样过程：
 
@@ -75,7 +72,7 @@ $$-\frac{1}{\sqrt{1-\bar{\alpha}_t}} {\epsilon}_{\theta}\left(\mathbf{x_t\mid y}
 
 $$\implies \epsilon_{\theta}\left(\mathbf{x_t\mid y}\right):=\epsilon_{\theta}\left(\mathbf{x_t}\right)-\sqrt{1-\bar{\alpha}_t} \cdot\gamma\cdot\nabla_{\mathbf{x_t}} \log p_{\phi}\left(\mathbf{y} \mid \mathbf{x_t}\right).$$
 
-如果我们有一个可微分判别模型  $$p_{\phi}\left(\mathbf{y} \mid \mathbf{x_t}\right)$$ 的，那我们就很容易得到 $\nabla_{\mathbf{x_t}} \log p_{\phi}\left(\mathbf{y} \mid \mathbf{x_t}\right)$。 **所以要将无条件扩散模型转换为条件扩散模型，我们所需要的只是一个分类器！**
+如果我们有一个可微分判别模型  $$p_{\phi}\left(\mathbf{y} \mid \mathbf{x_t}\right)$$ 的，那我们就很容易得到 $$\nabla_{\mathbf{x_t}} \log p_{\phi}(\mathbf{y} \mid \mathbf{x_t})$$。 **所以要将无条件扩散模型转换为条件扩散模型，我们所需要的只是一个分类器！**
 
 在语言模型中，通常预训练一个强大的无条件语言模型，在下游任务中，根据需要进行模型微调。从表面上看，classifier guidance 似乎为图像生成提供了同样的功能：预训练一个强大的无条件模型，然后在测试时使用单独的分类器，根据需要对分类器微调。
 
@@ -87,7 +84,7 @@ $$\implies \epsilon_{\theta}\left(\mathbf{x_t\mid y}\right):=\epsilon_{\theta}\l
 
 $$\nabla_\mathbf{x_t} \log p(\mathbf{x_t} \mid \mathbf{y})  = \nabla_\mathbf{x_t} \log p(\mathbf{x_t})+ \nabla_\mathbf{x_t} \log p(\mathbf{x_t} \mid \mathbf{y}) - \nabla_\mathbf{x_t} \log p(\mathbf{x_t}) .$$
 
-为了在 classifier-free guidance 中使用通用文本prompts，在训练中有时会将文本替换为空序列(表示为 $\emptyset$)，随后使用更新的 $\epsilon_{\theta}\left(\mathbf{x_t} \mid \mathbf{y}\right)$ 指导生成标签为 $\mathbf{y}$ 的图像：
+为了在 classifier-free guidance 中使用通用文本prompts，在训练中有时会将文本替换为空序列(表示为 $$\emptyset$$)，随后使用更新的 $$\epsilon_{\theta}\left(\mathbf{x_t} \mid \mathbf{y}\right)$$ 指导生成标签为 $$\mathbf{y}$$ 的图像：
 
 $$ \implies\epsilon_{\theta}\left(\mathbf{x_t} \mid \mathbf{y}\right)=\epsilon_{\theta}\left(\mathbf{x_t} \mid \emptyset\right)+\gamma\cdot\left(\epsilon_{\theta}\left(\mathbf{x_t} \mid \mathbf{y}\right)-\epsilon_{\theta}\left(\mathbf{x_t} \mid \emptyset\right)\right), $$
 
